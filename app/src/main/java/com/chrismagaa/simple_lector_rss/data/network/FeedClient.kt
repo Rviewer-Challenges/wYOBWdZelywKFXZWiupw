@@ -13,6 +13,9 @@ class FeedClient @Inject constructor(private val feedService: FeedService){
             val response = feedService.getRSSFeed(url)
             for(responseItem in response.body()!!.channel!!.itemList!!){
                 responseItem.titleBlog = response.body()!!.channel?.title?: ""
+                if(responseItem.content?.isNotEmpty() == true){
+                    responseItem.description = responseItem.content!!
+                }
             }
              response.body()?.channel?.itemList?: emptyList()
         }

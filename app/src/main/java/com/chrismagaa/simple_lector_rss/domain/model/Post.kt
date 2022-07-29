@@ -1,6 +1,7 @@
 package com.chrismagaa.simple_lector_rss.domain.model
 
 import android.os.Parcelable
+import android.util.Log
 import com.chrismagaa.simple_lector_rss.Item
 import com.chrismagaa.simple_lector_rss.data.persistence.entities.PostEntity
 import kotlinx.parcelize.Parcelize
@@ -19,11 +20,10 @@ class Post(
 ): Parcelable{
 
     fun getPictureURLFromDescription(): String {
-        val pattern = "<img[^>]*src=\"([^\"]+)\"[^?]*>"
-            val regex = Regex(pattern)
+        val regex = "<img.*src=\"(.*?)\".*>".toRegex()
             val match = regex.find(this.description)
             var url = match?.groupValues?.get(1) ?: ""
-            url = url.replace("http","https")
+            url = url.replace("http:","https:").replaceAfterLast("?","")
             return url
     }
 

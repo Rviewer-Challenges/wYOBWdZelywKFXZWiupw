@@ -34,16 +34,13 @@ class SavedFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = PostAdapter ({
-            goToDetailsActivity(it)
-        }) {post, position ->
-            vmFeed.updatePost(post)
-            adapter.deleteItem(position)
-        }
 
-        binding.listSaved.adapter = adapter
-        binding.listSaved.layoutManager = LinearLayoutManager(requireContext())
+        setupAdapter()
+        initObservers()
 
+    }
+
+    private fun initObservers() {
         vmFeed.loadingSavedPosts.observe(viewLifecycleOwner) {
             if (it) {
                 binding.progressBar.visibility = View.VISIBLE
@@ -54,9 +51,21 @@ class SavedFragment : Fragment() {
             }
         }
         vmFeed.savedPosts.observe(viewLifecycleOwner) {
-                feed = it
-                adapter.setData(it)
+            feed = it
+            adapter.setData(it)
         }
+    }
+
+    private fun setupAdapter() {
+        adapter = PostAdapter ({
+            goToDetailsActivity(it)
+        }) {post, position ->
+            vmFeed.updatePost(post)
+            adapter.deleteItem(position)
+        }
+
+        binding.listSaved.adapter = adapter
+        binding.listSaved.layoutManager = LinearLayoutManager(requireContext())
     }
 
     override fun onStart() {
