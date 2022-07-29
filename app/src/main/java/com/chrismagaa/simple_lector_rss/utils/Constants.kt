@@ -5,6 +5,7 @@ enum class RSSFeeds(val url: String, val title: String) {
     CBD_ORIGIN("https://cbdorigin.com/feed/", "CDB Origin"),
     CANADELICS("https://cannadelics.com/feed/","Cannadelics"),
     CANNABIS_SEEDS_STORE("https://www.cannabis-seeds-store.co.uk/Cannabis-Seeds-News/feed", "Cannabis Seeds Store"),
+    //Aquí puedes agregar más fuentes confiables de RSS
 }
 
 enum class ModeTheme(val value: Int) {

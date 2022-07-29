@@ -30,6 +30,8 @@ data class Item(
     var date: Date,
     @PropertyElement(name = "description")
     var description: String = "",
+    @PropertyElement(name = "content:encoded")
+    var content: String? = "",
     @PropertyElement(name = "link")
     var link: String = "",
 )
