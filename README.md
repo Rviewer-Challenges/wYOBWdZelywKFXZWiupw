@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # RSS reader
 
 Are you able to build the best RSS reader?
@@ -93,3 +94,10 @@ Remember that **there is no countdown**, so take your time and implement a solut
   <br><br>
   Made with ❤️ by <a href="https://rviewer.io">Rviewer</a>
 </p>
+=======
+# RSS Reader
+Lector RSS de diferentes blogs enfocados al cannabis.
+
+##Screenshots
+![screenshots](https://github.com/Rviewer-Challenges/wYOBWdZelywKFXZWiupw/blob/devel/app_screenshots.png)
+>>>>>>> e1ea4b5 (create Readme)
